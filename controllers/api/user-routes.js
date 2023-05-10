@@ -10,6 +10,8 @@ router.post('/', async (req, res) => {
         // a user object will be populated with a username, email, and password
         username: req.body.username,
         email: req.body.email,
+        // a user object will be populated with a username, username, and password
+        username: req.body.username,
         password: req.body.password,
       });
       
@@ -36,11 +38,19 @@ router.post('/login', async (req, res) => {
         },
       });
       // When there is no email matching the user's input
+        // Will search for the user's username within the user database
+      const dbUserData = await User.findOne({
+        where: {
+          username: req.body.username,
+        },
+      });
+      // When there is no username matching the user's input
       // a response is returned indicating the user's input was incorrect
       if (!dbUserData) {
         res
           .status(400)
           .json({ message: 'Incorrect email or password. Please try again!' });
+          .json({ message: 'Incorrect username or password. Please try again!' });
         return;
       }
   
@@ -50,6 +60,7 @@ router.post('/login', async (req, res) => {
         res
           .status(400)
           .json({ message: 'Incorrect email or password. Please try again!' });
+          .json({ message: 'Incorrect username or password. Please try again!' });
         return;
       }
   
