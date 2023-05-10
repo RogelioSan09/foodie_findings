@@ -22,9 +22,12 @@
 
 ### Credits
 - UC Berkeley Coding Bootcamp, (https://bootcamp.berkeley.edu/coding/)
-- freepic.com for our amazing images , (https://www.freepik.com/)
+- freepic.com for our amazing images, (https://www.freepik.com/)
 - Some excellent Tailwind CSS tutorials by Mo, (https://www.youtube.com/@mowebdev4162)
 - More CSS tutorials by Traversy Media, (https://www.traversymedia.com/guide)
+- Fonts and icons from fontawesome.com, (https://fontawesome.com/)
+- More fonts from Google Fonts, (https://fonts.google.com/)
+- Coolors for color palette help, (coolors.co)
 
 ### License
 GPL 
