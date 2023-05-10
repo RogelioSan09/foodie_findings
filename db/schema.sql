@@ -1,0 +1,5 @@
+DROP DATABASE IF EXISTS resturant_db;
+CREATE DATABASE resturant_db;
+
+DROP DATABASE IF EXISTS recipe_db;
+CREATE DATABASE recipe_db;
