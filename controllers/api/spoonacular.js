@@ -1,10 +1,10 @@
+const router = require('express').Router();
 const apiKey = 'e22651eb5e22452b9f588ff20e58e12b';
-const mysql = require('mysql');
 const { title } = require('process');
+const sequelize = require('./config/connection');
 
 // Create a MySQL connection pool
-const pool = mysql.createPool({
-  host: '',
+const pool = sequelize.createPool({
   user: 'root',
   password: 'password',
   database: 'recipe_db',
@@ -30,11 +30,9 @@ function saveRecipesToDatabase(recipes) {
   recipes.forEach(recipe => {
     // Save the recipe details to the database
     const { id, title } = recipe;
-
     // Prepare the SQL query
     const query = 'INSERT INTO recipes (id, title) VALUES (?, ?)';
     const values = [id, title];
-
     // Execute the query
     pool.query(query, values, (error, results) => {
       if (error) {
@@ -62,6 +60,3 @@ router.post('/', async (req, res) => {
       res.status(500).json(err);
     }
   });
-
-// Example
-searchRecipes('chicken'); // Search for recipes containing "chicken"
