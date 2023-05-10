@@ -6,3 +6,6 @@ CREATE DATABASE recipe_db;
 
 DROP DATABASE IF EXISTS user_db;
 CREATE DATABASE user_db;
+
+DROP DATABASE IF EXISTS favorites_db;
+CREATE DATABASE favorites_db;
