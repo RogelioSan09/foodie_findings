@@ -62,5 +62,4 @@ function searchRecipes(query) {
 //     }
 //   });
 
-// Example
-searchRecipes('chicken'); // Search for recipes containing "chicken"
+module.exports = { searchRecipes }

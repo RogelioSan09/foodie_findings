@@ -1,14 +1,13 @@
-const router = require('express').Router();
+const homeRouter = require('express').Router();
 // Import the custom middleware
 const {withAuth, areAuth } = require('../utils/auth');
 
-router.get('/login', areAuth, (req, res) => {
-    res.render('login');
-});
-
-// TODO set up route for search page
+// TODO set up route for main page
 // /
 // get
+homeRouter.get('/', (req, res) => {
+    res.render('main');
+});
 
 // TODO set up routes for results page
 // /results
@@ -17,5 +16,9 @@ router.get('/login', areAuth, (req, res) => {
 // TODO set up route for favorites page
 // /favorites
 // get
-  
-module.exports = router;
+
+homeRouter.get('/login', (req, res) => {
+    res.render('login');
+});
+
+module.exports = homeRouter;

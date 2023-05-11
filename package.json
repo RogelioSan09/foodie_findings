@@ -1,8 +1,34 @@
 {
   "dependencies": {
-    "api": "^5.0.8"
+    "api": "^5.0.8",
+    "bcrypt": "^5.1.0",
+    "connect-session-sequelize": "^7.1.6",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.0.7",
+    "express-session": "^1.17.3",
+    "process": "^0.11.10",
+    "sequelize": "^6.31.1"
   },
   "devDependencies": {
     "tailwindcss": "^3.3.2"
-  }
+  },
+  "scripts": {
+    "start": "node server.js",
+    "watch": "nodemon server.js"
+  },
+  "name": "foodie_findings",
+  "description": "## Table of Contents - [Description](#Description) - [Installation](#Installation) - [Usage](#Usage) - [Credits](#Credits) - [License](#License) - [Badges](#Badges)",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RogelioSan09/foodie_findings.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RogelioSan09/foodie_findings/issues"
+  },
+  "homepage": "https://github.com/RogelioSan09/foodie_findings#readme"
 }

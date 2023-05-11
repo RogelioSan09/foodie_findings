@@ -1,10 +1,11 @@
 {{!-- TODO: reformat to not use <li></li> --}}
 {{#each recipes}}
-<li>{{this.title}}</li>
-<li>
-    <!-- TODO: make backup img -->
-    <img src="{{ this.image ? this.image : "https://urltofallback.png" }}" alt="{{this.title}}" />
-</li>
-<li>{{this.sourceUrl}}</li>
-<li>{{this.readyInMinutes}}</li>
+  <li>{{this.title}}</li>
+  <li>
+      <!-- TODO: make backup img -->
+      <img src="{{ this.image ? this.image : "https://urltofallback.png" }}" alt="{{this.title}}" />
+  </li>
+  <li>{{this.sourceUrl}}</li>
+  <li>{{this.readyInMinutes}}</li>
+  <p>{{#if this.favorited}}♥️{{else}}♡{{/if}}</p>
 {{/each}}

@@ -10,6 +10,13 @@
               <img src="{{this.image_url}}" alt="" />
           </a>
           <p>{{this.distance}} miles away</p>
+          <button 
+            class="favorite-button" 
+            data-is-favorited="{{this.isFavorited}}" 
+            data-favorite-id="{{this.id}}"
+          >
+            {{#if this.isFavorited}}♥️{{else}}♡{{/if}}
+          </button>
       </div>
   {{/each}}
 {{else}}

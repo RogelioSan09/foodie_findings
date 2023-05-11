@@ -1,5 +1,4 @@
-const fetch = require('node-fetch');
-const sequelize  = require('');
+const sequelize  = require('sequelize');
 const { Restaurant, Recipe } = require('../');
 
 const seedDatabase = async () => {

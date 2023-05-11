@@ -1,3 +1,4 @@
 const User = require('./User');
+const UserFavorite = require('./UserFavorite');
 
-module.exports = { User };
+module.exports = { User, UserFavorite };
