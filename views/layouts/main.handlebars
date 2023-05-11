@@ -3,44 +3,36 @@
 
 <head>
     <title>Search Results</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.tailwindcss.com" />
 </head>
 
-<body>
+<body class="bg-yellow-200 font-sans">
 
     <header>
         <img src="./images/plate.png" alt="fork and knife line drawing">
         <h1>Search by Cuisine</h1>
-        <form action="/search" method="GET">
+        <form>
             <input type="text" name="query" placeholder="Search...">
-            <button type="submit">Search</button>
+            
+    {{!-- TODO: change to javascript to handle this button better (this is a weird way) --}}
+            <button type="button">Search</button>
         </form>
     </header>
 
-    <main>
-        <section class="results">
-            <h2>Restaurants</h2>
-            <ul>
-                {{#each restaurants}}
-                <li>{{this.name}}</li>
-                <li>{{this.image_url}}</li>
-                <li>{{this.url}}</li>
-                <li>{{this.distance}}</li>
-                {{/each}}
-            </ul>
-        </section>
-        <section class="results">
-            <h2>Recipes</h2>
-            <ul>
-                {{#each recipes}}
-                <li>{{this.title}}</li>
-                <li>{{this.image}}</li>
-                <li>{{this.sourceUrl}}</li>
-                <li>{{this.readyInMinutes}}</li>
-                {{/each}}
-            </ul>
-        </section>
-    </main>
+    {{!-- TODO: create if statement for restaurants or recipes --}}
+    {{#if restaurants or recipes }}
+        <main>
+            <section class="results">
+                <h2>Restaurants</h2>
+                <div id="restaurants-results"></div>
+            </section>
+
+            <section class="results">
+                <h2>Recipes</h2>
+                <div id="recipes-results"></div>
+            </section>
+        </main>
+    {{/if}}
 
 </body>
 
