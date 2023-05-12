@@ -1,4 +1,4 @@
-{{#if restaurants}}
+const restaurantPartial = `{{#if restaurants}}
   {{#each restaurants}}
       <div class="restaurant-card">
           <h3>
@@ -7,9 +7,9 @@
               </a>
           </h3>
           <a href="{{this.url}}" target="_blank">
-              <img src="{{this.image_url}}" alt="" />
+              <img style="width: 100%; max-width: 300px; height: auto;" class="restaurant-image" src="{{this.image_url}}" alt="" />
           </a>
-          <p>{{this.distance}} miles away</p>
+          <p>{{this.distanceInMiles}} miles away</p>
           <button 
             class="favorite-button" 
             data-is-favorited="{{this.isFavorited}}" 
@@ -21,4 +21,6 @@
   {{/each}}
 {{else}}
     <p>No restaurants found</p>
-{{/if}}
+{{/if}}`;
+
+export default restaurantPartial;

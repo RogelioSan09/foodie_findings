@@ -1,11 +1,16 @@
 // imported express router module 
-const router = require('express').Router();
-// imports data stored within User found at the models route
-const { User } = require('../../models');
+import express from 'express';
 
+// imports data stored within User found at the models route
+import Models from '../../models/index.js';
+
+const { User } = Models;
+
+const router = express.Router();
 // Will create a new user
-router.post('/', async (req, res) => {
+router.post('/new', async (req, res) => {
     try {
+      console.log(req.body)
       const dbUserData = await User.create({
         // a user object will be populated with a username, username, and password
         username: req.body.username,
@@ -15,8 +20,15 @@ router.post('/', async (req, res) => {
       // Will save the current user's session when they log-in
       req.session.save(() => {
         req.session.loggedIn = true;
+        req.session.user = {
+          username: dbUserData.username,
+          id: dbUserData.id,
+        }
   
-        res.status(200).json(dbUserData);
+        res.status(200).json({
+          username: dbUserData.username,
+          id: dbUserData.id,
+        });
       });
     } catch (err) {
       console.log(err);
@@ -55,10 +67,17 @@ router.post('/login', async (req, res) => {
   
       req.session.save(() => {
         req.session.loggedIn = true;
+        req.session.user = {
+          username: dbUserData.username,
+          id: dbUserData.id,
+        }
   
         res
           .status(200)
-          .json({ user: dbUserData, message: 'You are now logged in!' });
+          .json({
+            username: dbUserData.username,
+            id: dbUserData.id,
+          });
       });
     } catch (err) {
       console.log(err);
@@ -78,4 +97,4 @@ router.post('/logout', (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;

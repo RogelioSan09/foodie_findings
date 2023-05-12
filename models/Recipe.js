@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+import { Model, DataTypes } from 'sequelize';
+import sequelize from '../config/connection.js';
 
 class Recipe extends Model {}
 
@@ -60,4 +60,4 @@ Recipe.init({
     modelName: 'recipe'
 })
 
-module.exports = Recipe;
+export default Recipe;
