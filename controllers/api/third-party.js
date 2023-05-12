@@ -1,6 +1,7 @@
 import express from 'express';
 import yelp from 'yelp-fusion';
-import fetch from 'node-fetch';
+
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 const apiKey = process.env.YELP_API_KEY;
 const spoonacularApiKey = process.env.SPOONACULAR_API_KEY;
