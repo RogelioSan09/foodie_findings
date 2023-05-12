@@ -1,6 +1,6 @@
-const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
-const sequelize = require('../config/connection');
+import { Model, DataTypes } from 'sequelize';
+import bcrypt from 'bcrypt';
+import sequelize from '../config/connection.js';
 
 class User extends Model {
     // The checkPassword method takes the loginPw argument,
@@ -28,9 +28,9 @@ User.init(
         password: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                len: [6],
-            },
+            // validate: {
+            //     len: [6],
+            // },
         },
     },
     {
@@ -51,4 +51,4 @@ User.init(
 );
 
 //export user data
-module.exports = User;
+export default User;

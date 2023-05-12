@@ -1,18 +1,18 @@
 //import the router module
-const router = require('express').Router();
+import { Router } from 'express';
 
 //created the routes for api and home
-const apiRoutes = require('./api');
-const homeRoutes = require('./homeRoutes');
-const favoritesRoutes = require('./api/favorites-routes');
-const spoonacularRoutes = require('./api/spoonacular');
+import apiRoutes from './api/index.js';
+import homeRoutes from './homeRoutes.js';
+import favoritesRoutes from './api/favorites-routes.js';
+
+const router = Router();
 
 //assigned the middleware function homeRoutes to the root path
 //assigned the middleware function apiRoutes to the /api path
-router.use('/', homeRoutes);
+router.use(homeRoutes);
 router.use('/api', apiRoutes);
 router.use('/favorites', favoritesRoutes);
-router.use('/recipes', spoonacularRoutes);
 
 //exports the router object
-module.exports = router;
+export default router;
