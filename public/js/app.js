@@ -21,8 +21,14 @@ function search (query, location) {
   // use searchRestaurants from yelp.js
   // use render to render the results
   // TODO add error handling (if any of the promises fail, show an error message)
-  Promise.all([searchRecipes(query), searchRestaurants(query, location)])
-    .then(([recipes, restaurants]) => {
+  Promise.all([
+    // searchRecipes(query),
+    searchRestaurants(query, location)
+  ])
+    .then(([
+      // recipes,
+      restaurants
+    ]) => {
       // [
       //   {
       //     id: '8ef0hw092hrjf0sdfh',
@@ -48,25 +54,30 @@ function search (query, location) {
       });
       
       // loop over recipes and add isFavorited property
-      recipes.forEach(async (recipe) => {
-        const { id: favorite_id } = recipe;
-        if (!recipe.image) {
-          recipe.image = "/images/dinner-placeholder-image.jpg";
-        }
-        recipe.isFavorited = await isFavorited(userId, favorite_id);
-      });
+      // recipes.forEach(async (recipe) => {
+      //   const { id: favorite_id } = recipe;
+      //   if (!recipe.image) {
+      //     recipe.image = "/images/dinner-placeholder-image.jpg";
+      //   }
+      //   recipe.isFavorited = await isFavorited(userId, favorite_id);
+      // });
 
-      render(restaurants, recipes);
+      render(
+        restaurants,
+        // recipes
+      );
     })
 }
 
-function render (restaurants, recipes) {
-  console.log('rendering', restaurants, recipes)
+function render (
+  restaurants, 
+  // recipes
+) {
   const renderRestaurants = Handlebars.compile(restaurantTemplate);
-  const renderRecipes = Handlebars.compile(recipeTemplate);
+  // const renderRecipes = Handlebars.compile(recipeTemplate);
 
   document.getElementById("restaurants-results").innerHTML = renderRestaurants({ restaurants });
-  document.getElementById("recipes-results").innerHTML = renderRecipes({ recipes });
+  // document.getElementById("recipes-results").innerHTML = renderRecipes({ recipes });
   const hidden = document.querySelector('.hide');
   if (hidden) {
     hidden.classList.remove('hide');
