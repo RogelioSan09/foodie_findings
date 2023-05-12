@@ -7,9 +7,6 @@ const { User } = require('../../models');
 router.post('/', async (req, res) => {
     try {
       const dbUserData = await User.create({
-        // a user object will be populated with a username, email, and password
-        username: req.body.username,
-        email: req.body.email,
         // a user object will be populated with a username, username, and password
         username: req.body.username,
         password: req.body.password,
@@ -31,13 +28,6 @@ router.post('/', async (req, res) => {
 router.post('/login', async (req, res) => {
     // will attempt to execute the following 
     try {
-        // Will search for the user's email within the user database
-      const dbUserData = await User.findOne({
-        where: {
-          email: req.body.email,
-        },
-      });
-      // When there is no email matching the user's input
         // Will search for the user's username within the user database
       const dbUserData = await User.findOne({
         where: {
@@ -49,7 +39,6 @@ router.post('/login', async (req, res) => {
       if (!dbUserData) {
         res
           .status(400)
-          .json({ message: 'Incorrect email or password. Please try again!' });
           .json({ message: 'Incorrect username or password. Please try again!' });
         return;
       }
@@ -59,7 +48,6 @@ router.post('/login', async (req, res) => {
       if (!validPassword) {
         res
           .status(400)
-          .json({ message: 'Incorrect email or password. Please try again!' });
           .json({ message: 'Incorrect username or password. Please try again!' });
         return;
       }
