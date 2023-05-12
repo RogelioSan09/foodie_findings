@@ -25,12 +25,13 @@ router.post('/spoonacular', (req, res, next) => {
     .then(response => response.json())
     .then(data => {
       const recipes = data.results.map(recipe => {
-        return recipe.id;
+        return recipe.id || "";
       })
+      console.log(recipes)
       fetch(`https://api.spoonacular.com/recipes/informationBulk?apiKey=${spoonacularApiKey}&ids=${recipes.join(',')}`)
         .then(response => response.json())
         .then(data => {
-          res.send(data);
+          res.json(data);
         });
     })
     .catch(error => {
