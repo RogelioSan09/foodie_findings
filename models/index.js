@@ -1,5 +1,5 @@
-import User from './User.js';
-import UserFavorite from './UserFavorite.js';
-import Recipe from './Recipe.js';
+import User from './UserModel.js';
+import UserFavorite from './UserFavoriteModel.js';
+import Recipe from './RecipeModel.js';
 
 export default { User, UserFavorite, Recipe };
