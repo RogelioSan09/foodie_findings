@@ -1,27 +1,42 @@
+const favoriteRouter = require('express').Router();
+const { Recipe } = require('../../models');
+
 const apiKey = 'e22651eb5e22452b9f588ff20e58e12b';
-// const mysql = require('mysql');
-const { title } = require('process');
 
-// Create a MySQL connection pool
-// const pool = mysql.createPool({
-//   host: '',
-//   user: 'root',
-//   password: 'password',
-//   database: 'recipe_db',
-// });
+// TODO: Function to search for recipes- filtered down to just what we need
+// function searchRecipes(query) {
+//   fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${query}`)
+//     .then(response => response.json())
+//     .then(data => {
+//       const recipes = data.results;
+//       return recipes;
+//     })
+//     .catch(error => {
+//       console.error('Error:', error);
+//     });
+// }
 
-// Function to search for recipes
-function searchRecipes(query) {
-  fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${query}`)
-    .then(response => response.json())
-    .then(data => {
-      const recipes = data.results;
-      return recipes;
-    })
-    .catch(error => {
-      console.error('Error:', error);
+router.get('/', async (req, res) => {
+  try {
+    const randomRecipes = fetch(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=3&tags=${query}`);
+    // Get all recipe, sorted by name, image, readyInMinutes
+    const recipeData = await fetch().findAll({
+      include: [
+        {
+          attributes: ['name', 'image', 'readyInMinutes'],
+        },
+      ]  
     });
-}
+    console.log("recipeData", recipeData);
+    // Serialize recipe data so templates can read it
+    const recipes = recipeData.map((project) => project.dataValues);
+     console.log("recipes", recipes);
+    // Pass serialized data into Handlebars.js template
+    res.render('results', { recipes: recipes,  });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
 
 // Function to save recipes into the database
 // function saveRecipesToDatabase(recipes) {

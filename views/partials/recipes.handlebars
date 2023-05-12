@@ -1,11 +1,24 @@
-{{!-- TODO: reformat to not use <li></li> --}}
-{{#each recipes}}
-  <li>{{this.title}}</li>
-  <li>
-      <!-- TODO: make backup img -->
-      <img src="{{ this.image ? this.image : "https://urltofallback.png" }}" alt="{{this.title}}" />
-  </li>
-  <li>{{this.sourceUrl}}</li>
-  <li>{{this.readyInMinutes}}</li>
-  <p>{{#if this.favorited}}♥️{{else}}♡{{/if}}</p>
-{{/each}}
+{{#if recipes}}
+  {{#each recipes}}
+      <div class="recipe-card">
+          <h3>
+              <a href="{{this.url}}" target="_blank">
+                  {{this.name}}                    
+              </a>
+          </h3>
+          <a href="{{this.url}}" target="_blank">
+              <img src="{{this.image_url}}" alt="" />
+          </a>
+          <p>Ready in{{this.readyInMinutes}} minutes</p>
+          <button 
+            class="favorite-button" 
+            data-is-favorited="{{this.isFavorited}}" 
+            data-favorite-id="{{this.id}}"
+          >
+            {{#if this.isFavorited}}♥️{{else}}♡{{/if}}
+          </button>
+      </div>
+  {{/each}}
+{{else}}
+    <p>No recipes found</p>
+{{/if}}

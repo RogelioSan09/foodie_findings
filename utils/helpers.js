@@ -25,6 +25,7 @@ function favorite (favorite_id, isFavorited) {
   // if isFavorited is true, delete the favorite
   if (isFavorited) {
     fetch(`/favorites/delete`, {
+
       method: "DELETE",
       body: {
         favorite_id,
@@ -124,7 +125,7 @@ function init () {
   const recipeResults = document.querySelectorAll("#recipes-results");
   const liked = "♥️";
   const unliked = "♡";
-
+// TODO: show off this "disabled" bit (disable clicking the button over again, showing the user the "unline" before page reload)
   const handleFavoriteClick = async (event) => {
     if (event.target.classList.contains("favorite-button")) {
       const button = event.target;
