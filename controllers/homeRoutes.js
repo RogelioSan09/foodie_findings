@@ -1,30 +1,31 @@
-const homeRouter = require('express').Router();
+import express from 'express';
 // Import the custom middleware
-const {withAuth, areAuth } = require('../utils/auth');
+import withAuth from '../utils/auth.js';
 
+const homeRouter = express.Router();
 // TODO set up route for main page
 // 
 // get
-homeRouter.get('/', (req, res) => {
-    res.render('main');
+homeRouter.get('/', withAuth, (req, res, next) => {
+    res.render('main', { layout: 'search' });
 });
 
 // TODO set up routes for results page
 // /results
 // get
-homeRouter.get('/results', (req, res) => {
-    res.render('main');
+homeRouter.get('/results', withAuth, (req, res) => {
+    res.render('main', { layout: 'results' });
 })
 
 // TODO set up route for favorites page
 // /favorites
 // get
-homeRouter.get('/favorites', (req, res) => {
-    res.render('favorites');
+homeRouter.get('/favorites', withAuth, (req, res) => {
+    res.render('main', { layout: 'favorites' });
 })
 
 homeRouter.get('/login', (req, res) => {
-    res.render('login');
+    res.render('main', { layout: 'login' });
 });
 
-module.exports = homeRouter;
+export default homeRouter;

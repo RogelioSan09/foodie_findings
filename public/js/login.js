@@ -6,20 +6,22 @@ function storeUser (user) {
 const loginFormHandler = async (event) => {
     event.preventDefault();
     // Gather the data from the form elements on the page
-    const username = document.querySelector('#username-login').value.trim();
-    const password = document.querySelector('#password-login').value.trim();
+    const username = document.querySelector('#username-input').value.trim();
+    const password = document.querySelector('#password-input').value.trim();
   
     if (username && password) {
         // Send the e-mail and password to the server
-        const response = await fetch('/api/users/login', {
+        const response = await fetch('/api/user/login', {
             method: 'POST',
-            body: JSON.stringify({ username, password }),
+            mode: 'no-cors',
+            body: new URLSearchParams({ username, password }),
             headers: { 'Content-Type': 'application/json' },
         });
-  
-        if (response.ok) {
+        const data = await response.json();
+
+        if (response.status === 200) {
             // if successful, store user object in localStorage
-            storeUser(response.user);
+            storeUser(data);
             document.location.replace('/');
         } else {
             alert('Failed to log in.');
@@ -30,18 +32,20 @@ const loginFormHandler = async (event) => {
 const signupFormHandler = async (event) => {
     event.preventDefault();
   
-    const username = document.querySelector('#username-signup').value.trim();
-    const password = document.querySelector('#password-signup').value.trim();
+    const username = document.querySelector('#username-register-input').value.trim();
+    const password = document.querySelector('#password-register-input').value.trim();
   
     if (username && password) {
-        const response = await fetch('/api/users', {
+        const response = await fetch('/api/user/new', {
             method: 'POST',
-            body: JSON.stringify({ username, password }),
+            mode: 'no-cors',
             headers: { 'Content-Type': 'application/json' },
+            body: new URLSearchParams({ username, password }),
         });
-  
-        if (response.ok) {
-            storeUser(response.user);
+        const data = await response.json();
+
+        if (response.status === 200) {
+            storeUser(data);
             document.location.replace('/');
         } else {
             alert('Failed to sign up. Please try again');
@@ -49,10 +53,12 @@ const signupFormHandler = async (event) => {
     }
 };
 
-document
-  .querySelector('.login-form')
-  .addEventListener('submit', loginFormHandler);
+function init() {
+    const loginForm = document.querySelector('#login-form');
+    loginForm.addEventListener('submit', loginFormHandler);
 
-document
-  .querySelector('.signup-form')
-  .addEventListener('submit', signupFormHandler);
+    const signupForm = document.querySelector('#signup-form');
+    signupForm.addEventListener('submit', signupFormHandler);
+}
+
+document.addEventListener('DOMContentLoaded', init);

@@ -1,6 +1,9 @@
 // imported the Sequelize and dotenv modules
-const Sequelize = require('sequelize');
-require('dotenv').config();
+import Sequelize from 'sequelize';
+import dotenv from 'dotenv';
+
+// invoked the config method of the dotenv module
+dotenv.config();
 
 // declared a variable named sequelize
 let sequelize;
@@ -31,4 +34,4 @@ if (process.env.JAWSDB_URL) {
 }
 
 // exports the values of the variable sequelize
-module.exports = sequelize;
+export default sequelize;

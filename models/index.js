@@ -1,5 +1,5 @@
-const User = require('./User');
-const UserFavorite = require('./UserFavorite');
-const recipe = require('./spoonacular');
+import User from './User.js';
+import UserFavorite from './UserFavorite.js';
+import Recipe from './Recipe.js';
 
-module.exports = { User, UserFavorite, recipe };
+export default { User, UserFavorite, Recipe };

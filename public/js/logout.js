@@ -1,8 +1,9 @@
 // logout function
 const logout = async () => {
     // Execute POST method at specified path
-    const response = await fetch('/api/users/logout', {
+    const response = await fetch('/api/user/logout', {
         method: 'POST',
+        mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
     });
     // when a response is successfully retrieved the user will be logged out
@@ -17,4 +18,9 @@ const logout = async () => {
  };
   
 //Listens for the user's click on the logout button, then executes the logout function 
-document.querySelector('#logout').addEventListener('click', logout);
+function init () {
+    const logoutButton = document.querySelector('#logout-button')
+    logoutButton.addEventListener('click', logout);
+}
+
+document.addEventListener('DOMContentLoaded', init);

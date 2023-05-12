@@ -1,8 +1,12 @@
-const router = require('express').Router();
+import express from 'express';
 
-const userRoutes = require('./user-routes');
+import userRoutes from './user-routes.js';
+import thirdPartyRoutes from './third-party.js';
+
+const router = express.Router();
 
 //assigned the middleware function apiRoutes to the /user path
 router.use('/user', userRoutes);
+router.use('/third-party', thirdPartyRoutes);
 
-module.exports = router;
+export default router;
