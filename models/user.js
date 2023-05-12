@@ -16,31 +16,31 @@ class User extends Model {
 User.init(
     {
         id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true,
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
         },
         username: {
-        type: DataTypes.STRING,
-        allowNull: false,
+            type: DataTypes.STRING,
+            allowNull: false,
         },
         password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            len: [6],
-        },
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [6],
+            },
         },
     },
     {
         hooks: {
             // The beforeCreate function returns a modified newUserData object. 
             // A new user will be created with a hashed password instead of the original plain text password that was input by user.
-        async beforeCreate(newUserData) {
-            newUserData.password = await bcrypt.hash(newUserData.password, 10);
-            return newUserData;
-        },
+            async beforeCreate(newUserData) {
+                newUserData.password = await bcrypt.hash(newUserData.password, 10);
+                return newUserData;
+            },
         },
         sequelize,
         timestamps: false,

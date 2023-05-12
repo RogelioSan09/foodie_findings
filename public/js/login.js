@@ -1,3 +1,7 @@
+// create a helper that stores user object into localStorage
+function storeUser (user) {
+    localStorage.setItem("user", JSON.stringify(user));
+}
 
 const loginFormHandler = async (event) => {
     event.preventDefault();
@@ -14,6 +18,8 @@ const loginFormHandler = async (event) => {
         });
   
         if (response.ok) {
+            // if successful, store user object in localStorage
+            storeUser(response.user);
             document.location.replace('/');
         } else {
             alert('Failed to log in.');
@@ -35,6 +41,7 @@ const signupFormHandler = async (event) => {
         });
   
         if (response.ok) {
+            storeUser(response.user);
             document.location.replace('/');
         } else {
             alert('Failed to sign up. Please try again');
