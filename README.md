@@ -52,12 +52,14 @@ THEN I know my information is safe (bcrypt)
 
 WHEN I enter a search by cuisine,
 THEN I am presented with relevant results in recipes AND restaurants on one page
-[Front End Code](https://i.imgur.com/GbioL35.png)
+![Front End Code](https://i.imgur.com/GbioL35.png)
 The code displayed handles the front end aspects of the website. Displays the page title, search bars for user query and location, as well as a submission button.
 The code also handles displaying the results of the user's search after the data has been retrieved from the Yelp API.
-[Imgur](https://i.imgur.com/VqN55Ur.png) [Imgur](https://i.imgur.com/Y9m1uhz.png)
+
+![Search Function](https://i.imgur.com/VqN55Ur.png) ![API Call](https://i.imgur.com/Y9m1uhz.png)
 Back end development: A call is performed to Yelp Api and we are filtering the yelp database by user search term and location.
-[Imgur](https://i.imgur.com/6S1rXyX.png)
+
+![Render Function for API Results](https://i.imgur.com/6S1rXyX.png)
 Back end Development: An event listener is established for the submission of user's search, created a function to initialize the render function upon form submission.
 
 WHEN I click on a results title or image
@@ -66,7 +68,7 @@ THEN I am directed to the source URL.
 WHEN I click to like a search result
 THEN I will see a heart filled in next to the liked result
 
-[Website Demo](https://i.imgur.com/lCJfCkF.gifv)
+![Website Demo](https://i.imgur.com/lCJfCkF.gifv)
 
 ### Credits
 - UC Berkeley Coding Bootcamp, (https://bootcamp.berkeley.edu/coding/)
