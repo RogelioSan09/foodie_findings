@@ -7,7 +7,7 @@ const restaurantPartial = `{{#if restaurants}}
               </a>
           </h3>
           <a href="{{this.url}}" target="_blank">
-              <img style="width: 100%; max-width: 300px; height: auto;" class="restaurant-image" src="{{this.image_url}}" alt="" />
+              <img style="width: 100%; max-width: 200px; height: auto;" class="restaurant-image" src="{{this.image_url}}" alt="" />
           </a>
           <p>{{this.distanceInMiles}} miles away</p>
           <button 

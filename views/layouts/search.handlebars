@@ -4,14 +4,14 @@
 <header>
     <h1 class="text-xl font-bold text-f9c784">Search by Cuisine</h1>
     <form id="search-form">
-        <input type="text" id="search-input" name="query" placeholder="Pizza, Cocktails, Chinese...">
-        <input type="text" id="location-input" name="location" placeholder="San Francisco, CA">
+        <input type="text" id="search-input" name="query" placeholder="Pizza, Cocktails, Chinese..." value="pizza">
+        <input type="text" id="location-input" name="location" placeholder="San Francisco, CA" value="berkeley">
         <button type="submit">Search</button>
     </form>
 </header>
 
 {{!-- TODO: write a css rule for .hide which has display: none; --}}
-<main class="hide" id="results-container">
+<main class="flex flex-wrap" id="results-container ">
     <section class="results">
         <h2>Restaurants</h2>
         <div id="restaurants-results"></div>

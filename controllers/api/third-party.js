@@ -20,23 +20,23 @@ router.post('/yelp', (req, res, next) => {
   });
 });
 
-router.post('/spoonacular', (req, res, next) => {
-  fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${spoonacularApiKey}&query=${req.body.query}`)
-    .then(response => response.json())
-    .then(data => {
-      const recipes = data.results.map(recipe => {
-        return recipe.id || "";
-      })
-      console.log(recipes)
-      fetch(`https://api.spoonacular.com/recipes/informationBulk?apiKey=${spoonacularApiKey}&ids=${recipes.join(',')}`)
-        .then(response => response.json())
-        .then(data => {
-          res.json(data);
-        });
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-});
+// router.post('/spoonacular', (req, res, next) => {
+//   fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${spoonacularApiKey}&query=${req.body.query}`)
+//     .then(response => response.json())
+//     .then(data => {
+//       const recipes = data.results.map(recipe => {
+//         return recipe.id || "";
+//       })
+//       console.log(recipes)
+//       fetch(`https://api.spoonacular.com/recipes/informationBulk?apiKey=${spoonacularApiKey}&ids=${recipes.join(',')}`)
+//         .then(response => response.json())
+//         .then(data => {
+//           res.json(data);
+//         });
+//     })
+//     .catch(error => {
+//       console.error('Error:', error);
+//     });
+// });
 
 export default router;

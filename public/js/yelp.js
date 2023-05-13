@@ -1,5 +1,5 @@
 // Front end request to our api, which requests the yelp api
-// TODO Create searchRestaurants function - we want the data to be filtered down to just what we need
+// Create searchRestaurants function - we want the data to be filtered down to just what we need
 async function searchRestaurants(query, location) {
   const results = await fetch('/api/third-party/yelp', {
     method: 'POST',

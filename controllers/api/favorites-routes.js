@@ -25,7 +25,7 @@ favoriteRouter.get('/:user_id', async (req, res) => {
 })
 
 // GET /favorites/:user_id/:favorite_id
-favoriteRouter.get('/:user_id/:favorite_id', async (req, res) => {
+favoriteRouter.post('/:user_id/:favorite_id', async (req, res) => {
   const favoriteData = await UserFavorite.findOne({
     attributes: [
       'favorite_id',
@@ -45,29 +45,29 @@ favoriteRouter.get('/:user_id/:favorite_id', async (req, res) => {
 
 // POST /favorites/new, { favorite_id: string, user_id: string }
 favoriteRouter.post('/new', async (req, res) => {
-  try {
-    const favoriteData = await UserFavorite.create({
-      favorite_id: req.body.favorite_id,
-      user_id: req.body.user_id,
-    });
+  const favoriteData = await UserFavorite.create({
+    favorite_id: req.body.favorite_id,
+    user_id: req.body.user_id,
+  });
+  if (favoriteData) {
     res.status(200).json(favoriteData);
-  } catch (err) {
-    res.status(500).json(err);
+  } else {
+    res.status(500).json({ message: 'Error creating favorite!' });
   }
 })
 
 // DELETE /favorites/delete, { favorite_id: string, user_id: string }
 favoriteRouter.delete('/delete', async (req, res) => {
-  try {
-    const favoriteData = await UserFavorite.destroy({
-      where: {
-        favorite_id: req.body.favorite_id,
-        user_id: req.body.user_id,
-      },
-    });
+  const favoriteData = await UserFavorite.destroy({
+    where: {
+      favorite_id: req.body.favorite_id,
+      user_id: req.body.user_id,
+    },
+  });
+  if (favoriteData) {
     res.status(200).json(favoriteData);
-  } catch (err) {
-    res.status(500).json(err);
+  } else {
+    res.status(500).json({ message: 'Error deleting favorite!' });
   }
 })
 

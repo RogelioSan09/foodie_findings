@@ -1,7 +1,7 @@
-import searchRecipes from "./spoonacular.js";
+// import searchRecipes from "./spoonacular.js";
 import searchRestaurants from "./yelp.js";
 
-import recipeTemplate from '../partials/recipes.js';
+// import recipeTemplate from '../partials/recipes.js';
 import restaurantTemplate from '../partials/restaurants.js';
 
 // create a helper that gets user object from localStorage
